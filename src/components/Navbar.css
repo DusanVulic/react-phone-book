@@ -11,7 +11,7 @@ nav {
 }
 
 h2 {
-    color: blueviolet;
+    color: #42a5f5;
 }
 
 .menu-toggle .bar {
@@ -20,7 +20,7 @@ h2 {
     border-radius: 1.25px;
     margin: 5px;
     transition: all 0.3s linear;
-    background: blueviolet;
+    background: #42a5f5;
     display: block;
     cursor: pointer;
 }
@@ -65,11 +65,16 @@ h2 {
     cursor: pointer;
 }
 
+.nav-link {
+    text-decoration: none;
+    color: #333;
+}
+
 
 /*LOGOUT BUTTON */
 
 .btn {
-    background: blueviolet;
+    background: #42a5f5;
     color: white;
     padding: 0.25rem 0.75rem;
     border-radius: 0.25rem;
@@ -104,7 +109,7 @@ h2 {
         padding: 0;
     }
     h2 {
-        color: blueviolet;
+        color: #42a5f5;
         margin-left: 20px;
     }
     .menu-toggle {

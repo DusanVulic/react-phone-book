@@ -2,6 +2,7 @@
 import "./Navbar.css";
 
 //import links data
+import { Link } from "react-router-dom";
 
 import { useState, useRef, useEffect } from "react";
 
@@ -9,7 +10,7 @@ const Navbar = () => {
   const [showLinks, setShowLinks] = useState(false);
 
   // do I have a user ?  -- sa ovim kondiciono renderujem navigaciju
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(true);
   //
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
@@ -45,11 +46,47 @@ const Navbar = () => {
 
         <div className="links-container" ref={linksContainerRef}>
           <ul className="links" ref={linksRef}>
-            <li className=""> signUp</li>
-            <li>login</li>
+            <li>
+              <Link
+                to="/signup"
+                className="nav-link"
+                onClick={() => setShowLinks(false)}
+              >
+                signUp
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/login"
+                className="nav-link"
+                onClick={() => setShowLinks(false)}
+              >
+                login
+              </Link>
+            </li>
 
-            {user && <li>phoneBook</li>}
-            {user && <li>create</li>}
+            {user && (
+              <li>
+                <Link
+                  to="/"
+                  className="nav-link"
+                  onClick={() => setShowLinks(false)}
+                >
+                  phoneBook
+                </Link>
+              </li>
+            )}
+            {user && (
+              <li>
+                <Link
+                  to="/create"
+                  className="nav-link"
+                  onClick={() => setShowLinks(false)}
+                >
+                  create
+                </Link>
+              </li>
+            )}
             {user && (
               <li>
                 <button className="btn">Logout</button>
