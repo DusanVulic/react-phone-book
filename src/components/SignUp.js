@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { useSignup } from "../hooks/useSignup";
+
 import classes from "./SignUp.module.css";
 
 //MUI components
@@ -12,6 +14,10 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [password, setPassword] = useState("");
+
+  //
+  const { signup, isPending, error } = useSignup();
+  //
 
   const [emailError, setEmailError] = useState(false);
   const [displayNameError, setDisplayNameError] = useState(false);
@@ -35,8 +41,9 @@ const SignUp = () => {
       setPasswordError(true);
     }
 
-    if (email && displayName && password) {
-      console.log(email, displayName, password);
+    if (email && password && displayName) {
+      console.log(email, password, displayName);
+      signup(email, password, displayName);
       setEmail("");
       setDisplayName("");
       setPassword("");
@@ -104,6 +111,8 @@ const SignUp = () => {
           >
             SignUp
           </Button>
+          {isPending && <p>loading...</p>}
+          {error && <p>{error}</p>}
         </form>
       </Container>
     </>
