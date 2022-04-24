@@ -1,10 +1,9 @@
+import React, { useState, useRef, useEffect } from "react";
 //import style from navbar css
 import "./Navbar.css";
 
 //import links data
 import { Link } from "react-router-dom";
-
-import { useState, useRef, useEffect } from "react";
 
 const Navbar = () => {
   const [showLinks, setShowLinks] = useState(false);

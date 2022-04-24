@@ -30,10 +30,9 @@ const Login = () => {
 
     if (email && password) {
       console.log(email, password);
-
-      setEmail("");
-      setPassword("");
     }
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -50,14 +49,13 @@ const Login = () => {
           onSubmit={submitHandler}
           className={classes.form}
         >
-          <h2 className={classes.title}>Login</h2>
+          <h2 className={classes.title}> Login </h2>
           <TextField
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             label="email"
             variant="outlined"
             color="primary"
-            type="email"
             fullWidth
             required
             error={emailError}
