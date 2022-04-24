@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import { useHistory } from "react-router-dom";
 
 import classes from "./Create.module.css";
 
@@ -8,7 +10,15 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 
-const Create = () => {
+//import useFirestore
+
+import { useFirestore } from "../hooks/useFirestore";
+//
+
+const Create = ({ uid }) => {
+  //dodavanje podataka u firestore
+  const { addDocument, response } = useFirestore("phonebook");
+  //
   const [nameData, setNameData] = useState("");
   const [company, setCompany] = useState("");
   const [phone, setPhone] = useState("");
@@ -20,6 +30,10 @@ const Create = () => {
   const [phoneError, setPhoneError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [additionalInfoError, setAdditionalInfoError] = useState(false);
+
+  //redirectin user after creating phone data
+
+  const history = useHistory();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -46,7 +60,15 @@ const Create = () => {
       setAdditionalInfoError(true);
     }
     if (nameData && company && phone && email && additionalInfo) {
-      console.log(nameData, company, phone, email, additionalInfo);
+      console.log({ nameData, company, phone, email, additionalInfo });
+      addDocument({
+        uid,
+        nameData,
+        company,
+        phone,
+        email,
+        additionalInfo,
+      });
 
       setNameData("");
       setCompany("");
@@ -55,6 +77,15 @@ const Create = () => {
       setAdditionalInfo("");
     }
   };
+
+  useEffect(() => {
+    if (response.success === true) {
+      setTimeout(() => {
+        history.push("/");
+      }, 1500);
+    }
+    // eslint-disable-next-line
+  }, [response.success]);
 
   return (
     <>

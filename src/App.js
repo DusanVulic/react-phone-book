@@ -34,7 +34,7 @@ function App() {
             </Route>
             <Route path="/create">
               {!user && <Redirect to="/login" />}
-              {user && <Create />}
+              {user && <Create uid={user.uid} />}
             </Route>
           </Switch>
         </Router>

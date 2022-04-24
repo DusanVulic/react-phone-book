@@ -11,106 +11,108 @@ import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRound
 import { useSignup } from "../hooks/useSignup";
 
 const SignUp = () => {
-        const [email, setEmail] = useState("");
-        const [displayName, setDisplayName] = useState("");
-        const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [displayName, setDisplayName] = useState("");
+  const [password, setPassword] = useState("");
 
-        const { signup, isPending, error } = useSignup();
+  const { signup, isPending, error } = useSignup();
 
-        const [emailError, setEmailError] = useState(false);
-        const [displayNameError, setDisplayNameError] = useState(false);
-        const [passwordError, setPasswordError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [displayNameError, setDisplayNameError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
-        const submitHandler = (e) => {
-            e.preventDefault();
+  const submitHandler = (e) => {
+    e.preventDefault();
 
-            setEmailError(false);
-            setDisplayNameError(false);
-            setPasswordError(false);
+    setEmailError(false);
+    setDisplayNameError(false);
+    setPasswordError(false);
 
-            if (email === "") {
-                setEmailError(true);
-            }
-            if (displayName === "") {
-                setDisplayNameError(true);
-            }
+    if (email === "") {
+      setEmailError(true);
+    }
+    if (displayName === "") {
+      setDisplayNameError(true);
+    }
 
-            if (password === "") {
-                setPasswordError(true);
-            }
+    if (password === "") {
+      setPasswordError(true);
+    }
 
-            if (email && password && displayName) {
-                console.log(email, password, displayName);
-                signup(email, password, displayName);
-                setEmail("");
-                setDisplayName("");
-                setPassword("");
-            }
-        };
+    if (email && password && displayName) {
+      console.log(email, password, displayName);
+      signup(email, password, displayName);
+      setEmail("");
+      setDisplayName("");
+      setPassword("");
+    }
+  };
 
-        return ( <
-                >
-                <
-                Container sx = {
-                    {
-                        marginTop: "100px",
-                        width: "80%",
-                    }
-                } >
-                <
-                form noValidate autoComplete = "off"
-                onSubmit = { submitHandler }
-                className = { classes.form } >
-                <
-                h2 className = { classes.title } > SignUp < /h2> <
-                TextField value = { email }
-                onChange = {
-                    (e) => setEmail(e.target.value) }
-                label = "email"
-                variant = "outlined"
-                color = "primary"
-                fullWidth required error = { emailError }
-                sx = {
-                    { marginBottom: "25px" } }
-                />
+  return (
+    <>
+      <Container
+        sx={{
+          marginTop: "100px",
+          width: "80%",
+        }}
+      >
+        <form
+          noValidate
+          autoComplete="off"
+          onSubmit={submitHandler}
+          className={classes.form}
+        >
+          <h2 className={classes.title}>SignUp</h2>
+          <TextField
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            label="email"
+            variant="outlined"
+            color="primary"
+            fullWidth
+            required
+            error={emailError}
+            sx={{ marginBottom: "25px" }}
+          />
 
-                <
-                TextField value = { password }
-                onChange = {
-                    (e) => setPassword(e.target.value) }
-                label = "password"
-                variant = "outlined"
-                color = "primary"
-                type = "password"
-                fullWidth required error = { passwordError }
-                sx = {
-                    { marginBottom: "25px" } }
-                />
+          <TextField
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            label="password"
+            variant="outlined"
+            color="primary"
+            type="password"
+            fullWidth
+            required
+            error={passwordError}
+            sx={{ marginBottom: "25px" }}
+          />
 
-                <
-                TextField value = { displayName }
-                onChange = {
-                    (e) => setDisplayName(e.target.value) }
-                label = "display name"
-                variant = "outlined"
-                color = "primary"
-                type = "text"
-                fullWidth required error = { displayNameError }
-                sx = {
-                    { marginBottom: "25px" } }
-                />
+          <TextField
+            value={displayName}
+            onChange={(e) => setDisplayName(e.target.value)}
+            label="display name"
+            variant="outlined"
+            color="primary"
+            type="text"
+            fullWidth
+            required
+            error={displayNameError}
+            sx={{ marginBottom: "25px" }}
+          />
 
-                <
-                Button variant = "contained"
-                type = "submit"
-                endIcon = { < ArrowForwardIosRoundedIcon / > } >
-                SignUp <
-                /Button> {
-                    error && < p className = { classes.error } > { error } < /p>} {
-                        isPending && < p className = { classes.loading } > Loading.... < /p>} <
-                            /form> <
-                            /Container> <
-                            />
-                    );
-                };
-                export default SignUp;
+          <Button
+            variant="contained"
+            type="submit"
+            endIcon={<ArrowForwardIosRoundedIcon />}
+          >
+            SignUp
+          </Button>
+          {error && <p className={classes.error}>{error}</p>}
+          {isPending && <p className={classes.loading}>Loading....</p>}
+        </form>
+      </Container>
+    </>
+  );
+};
+export default SignUp;
