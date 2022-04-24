@@ -37,9 +37,10 @@ const Login = () => {
     if (email && password) {
       console.log(email, password);
       login(email, password);
+
+      setEmail("");
+      setPassword("");
     }
-    setEmail("");
-    setPassword("");
   };
 
   return (
@@ -87,8 +88,8 @@ const Login = () => {
           >
             Login
           </Button>
-          {error && <p>{error}</p>}
-          {isPending && <p>login.....</p>}
+          {error && <p className={classes.error}> {error}</p>}
+          {isPending && <p className={classes.login}>login.....</p>}
         </form>
       </Container>
     </>

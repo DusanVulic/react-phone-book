@@ -1,0 +1,13 @@
+.title {
+    color: #42a5f5;
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: normal;
+}
+
+@media screen and (min-width: 800px) {
+    .title {
+        font-size: 1.5rem;
+    }
+}

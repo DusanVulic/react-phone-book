@@ -100,7 +100,13 @@ const Navbar = () => {
                 </li>
 
                 <li>
-                  <button className="btn" onClick={logout}>
+                  <button
+                    className="btn"
+                    onClick={() => {
+                      setShowLinks(false);
+                      logout();
+                    }}
+                  >
                     Logout
                   </button>
                 </li>
