@@ -8,10 +8,14 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 
+import { useSignup } from "../hooks/useSignup";
+
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [password, setPassword] = useState("");
+
+  const { signup, isPending, error } = useSignup();
 
   const [emailError, setEmailError] = useState(false);
   const [displayNameError, setDisplayNameError] = useState(false);
@@ -37,6 +41,7 @@ const SignUp = () => {
 
     if (email && password && displayName) {
       console.log(email, password, displayName);
+      signup(email, password, displayName);
     }
     setEmail("");
     setDisplayName("");
@@ -103,6 +108,8 @@ const SignUp = () => {
           >
             SignUp
           </Button>
+          {error && <p>{error}</p>}
+          {isPending && <p>Loading....</p>}
         </form>
       </Container>
     </>

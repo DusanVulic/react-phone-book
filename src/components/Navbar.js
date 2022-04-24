@@ -5,12 +5,14 @@ import "./Navbar.css";
 //import links data
 import { Link } from "react-router-dom";
 
+//import logout
+import { useLogout } from "../hooks/useLogout";
+
 const Navbar = () => {
   const [showLinks, setShowLinks] = useState(false);
 
-  // do I have a user ?  -- sa ovim kondiciono renderujem navigaciju
-  const [user, setUser] = useState(true);
-  //
+  const { logout } = useLogout();
+
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
 
@@ -63,34 +65,31 @@ const Navbar = () => {
                 login
               </Link>
             </li>
+            <li>
+              <Link
+                to="/"
+                className="nav-link"
+                onClick={() => setShowLinks(false)}
+              >
+                phoneBook
+              </Link>
+            </li>
 
-            {user && (
-              <li>
-                <Link
-                  to="/"
-                  className="nav-link"
-                  onClick={() => setShowLinks(false)}
-                >
-                  phoneBook
-                </Link>
-              </li>
-            )}
-            {user && (
-              <li>
-                <Link
-                  to="/create"
-                  className="nav-link"
-                  onClick={() => setShowLinks(false)}
-                >
-                  create
-                </Link>
-              </li>
-            )}
-            {user && (
-              <li>
-                <button className="btn">Logout</button>
-              </li>
-            )}
+            <li>
+              <Link
+                to="/create"
+                className="nav-link"
+                onClick={() => setShowLinks(false)}
+              >
+                create
+              </Link>
+            </li>
+
+            <li>
+              <button className="btn" onClick={logout}>
+                Logout
+              </button>
+            </li>
           </ul>
         </div>
       </div>
