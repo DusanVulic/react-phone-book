@@ -1,0 +1,14 @@
+.title {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.loading {
+    font-size: 1rem;
+    color: green;
+}
+
+.error {
+    color: darkred;
+}

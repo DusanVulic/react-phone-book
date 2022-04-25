@@ -3,6 +3,7 @@ import SignUp from "./components/SignUp";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Create from "./components/Create";
+import Search from "./components/Search";
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,6 +20,7 @@ function App() {
       {authIsReady && (
         <Router>
           <Navbar />
+
           <Switch>
             <Route exact path="/">
               {!user && <Redirect to="/login" />}
@@ -35,6 +37,10 @@ function App() {
             <Route path="/create">
               {!user && <Redirect to="/login" />}
               {user && <Create uid={user.uid} />}
+            </Route>
+            <Route path="/search">
+              {!user && <Redirect to="/login" />}
+              {user && <Search uid={user.uid} />}
             </Route>
           </Switch>
         </Router>

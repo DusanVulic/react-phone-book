@@ -9,6 +9,7 @@ import ContactList from "./ContactList";
 
 // import css from home.module
 import classes from "./Home.module.css";
+import Serchbar from "./Searchbar";
 
 const Home = () => {
   const { user } = useAuthContext();
@@ -21,6 +22,8 @@ const Home = () => {
 
   return (
     <>
+      <Serchbar />
+
       <h3 className={classes.title}>
         Pozdrav {user.displayName}, ovo su tvoji kontakti:{" "}
       </h3>
