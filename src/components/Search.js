@@ -6,11 +6,15 @@ import { projectFirestore } from "../firebase/config";
 // styles
 import classes from "./Search.module.css";
 
-import { useAuthContext } from "../hooks/useAuthContext";
 import SearchList from "./SearchList";
+
+///////user
+import { useAuthContext } from "../hooks/useAuthContext";
+//////
 
 export default function Search() {
   const { user } = useAuthContext();
+
   const queryString = useLocation().search;
   const queryParams = new URLSearchParams(queryString);
   const query = queryParams.get("q");
@@ -22,35 +26,35 @@ export default function Search() {
   useEffect(() => {
     setIsPending(true);
 
-    const unsub = projectFirestore
-      .collection("phonebook", ["uid", "==", user.uid])
-      .onSnapshot(
-        (snapshot) => {
-          if (snapshot.empty) {
-            setError("No contacts to load");
-            setIsPending(false);
-          } else {
-            let results = [];
-            snapshot.docs.forEach((doc) => {
-              results.push({ ...doc.data(), id: doc.id });
-            });
-            setData(() => {
-              let filteredRecipes = results.filter((recipe) =>
-                recipe.nameData.toLowerCase().includes(query.toLowerCase())
-              );
-              return filteredRecipes;
-            });
-            setIsPending(false);
-          }
-        },
-        (err) => {
-          setError(err.message);
+    const unsub = projectFirestore.collection("phonebook").onSnapshot(
+      (snapshot) => {
+        if (snapshot.empty) {
+          setError("No contacts to load");
+          setIsPending(false);
+        } else {
+          let results = [];
+          snapshot.docs.forEach((doc) => {
+            results.push({ ...doc.data(), id: doc.id });
+          });
+          setData(() => {
+            let filteredContacts = results.filter((contact) =>
+              contact.nameData.toLowerCase().includes(query.toLowerCase())
+            );
+            console.log(filteredContacts);
+            return filteredContacts;
+          });
+
           setIsPending(false);
         }
-      );
+      },
+      (err) => {
+        setError(err.message);
+        setIsPending(false);
+      }
+    );
 
     return () => unsub();
-  }, [query, user.uid]);
+  }, [query]);
 
   return (
     <div>

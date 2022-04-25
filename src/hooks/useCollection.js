@@ -5,7 +5,7 @@ export const useCollection = (collection, _query) => {
     const [documents, setDocuments] = useState(null);
     const [error, setError] = useState(false);
 
-    //I must use this to awoid infinite loop
+    //I must use this to awoid infinite loop couse it goes in dependency array
     const query = useRef(_query).current;
 
     useEffect(() => {

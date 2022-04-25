@@ -2,16 +2,25 @@
 
 
 
+// rules_version = '2';
+// service cloud.firestore {
+//   match /databases/{database}/documents {
+//     match /phonebook/{document=**} {
+      
+//       // only authenticated users can create 
+//       allow create: if request.auth != null;
+// //user id must match the document creator to read & deletefi
+//       allow read, delete: if request.auth.uid == resource.data.uid;
+
+//     }
+//   }
+// }
+
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /phonebook/{document=**} {
-      
-      // only authenticated users can create 
-      allow create: if request.auth != null;
-//user id must match the document creator to read & deletefi
-      allow read, delete: if request.auth.uid == resource.data.uid;
-
+    match /{document=**} {
+      allow read, write
     }
   }
 }
