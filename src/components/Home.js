@@ -25,7 +25,7 @@ const Home = () => {
       <Serchbar />
 
       <h3 className={classes.title}>
-        Pozdrav {user.displayName}, ovo su tvoji kontakti:{" "}
+        Hello {user.displayName}, these are your contacts:
       </h3>
       {error && <p> {error}</p>}
       {documents && <ContactList phonebookData={documents} />}
