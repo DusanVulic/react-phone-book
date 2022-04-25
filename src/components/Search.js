@@ -8,13 +8,7 @@ import classes from "./Search.module.css";
 
 import SearchList from "./SearchList";
 
-///////user
-import { useAuthContext } from "../hooks/useAuthContext";
-//////
-
 export default function Search() {
-  const { user } = useAuthContext();
-
   const queryString = useLocation().search;
   const queryParams = new URLSearchParams(queryString);
   const query = queryParams.get("q");
