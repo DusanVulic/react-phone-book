@@ -52,7 +52,7 @@ export default function Search() {
 
   return (
     <div>
-      <h2 className={classes.title}>Contacts including "{query}"</h2>
+      <h2 className={classes.title}>Contacts including "{query}" :</h2>
       {error && <p className={classes.error}>{error} ....</p>}
       {isPending && <p className={classes.loading}>Loading...</p>}
       {data && <SearchList searchData={data} />}

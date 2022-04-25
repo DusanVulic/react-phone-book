@@ -51,6 +51,12 @@ article {
     display: none;
 }
 
+.no_contact {
+    color: #42a5f5;
+    margin-left: 10px;
+    font-size: 1.15rem;
+}
+
 @media screen and (min-width: 768px) {
     .wrap {
         grid-template-columns: 1fr 1fr;

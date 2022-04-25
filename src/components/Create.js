@@ -101,11 +101,11 @@ const Create = ({ uid }) => {
           onSubmit={submitHandler}
           className={classes.form}
         >
-          <h2 className={classes.title}>Unesite podatke </h2>
+          <h2 className={classes.title}>Please enter contact data </h2>
           <TextField
             value={nameData}
             onChange={(e) => setNameData(e.target.value)}
-            label="ime i prezime"
+            label="Name and Lastname"
             variant="outlined"
             color="primary"
             type="text"
@@ -118,7 +118,7 @@ const Create = ({ uid }) => {
           <TextField
             value={company}
             onChange={(e) => setCompany(e.target.value)}
-            label="kompanija"
+            label="company"
             variant="outlined"
             color="primary"
             type="text"
@@ -131,7 +131,7 @@ const Create = ({ uid }) => {
           <TextField
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            label="telefon"
+            label="telephone"
             variant="outlined"
             color="primary"
             type="number"
@@ -156,7 +156,7 @@ const Create = ({ uid }) => {
           <TextField
             value={additionalInfo}
             onChange={(e) => setAdditionalInfo(e.target.value)}
-            label="dodatni podaci"
+            label="additional info"
             multiline
             rows={4}
             fullWidth
@@ -170,7 +170,7 @@ const Create = ({ uid }) => {
             type="submit"
             endIcon={<ArrowForwardIosRoundedIcon />}
           >
-            Sacuvaj
+            save contact
           </Button>
         </form>
       </Container>
