@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./ContactList.module.css";
 
 //import user
@@ -7,6 +7,18 @@ import { useAuthContext } from "../hooks/useAuthContext";
 
 const SearchList = ({ searchData }) => {
   const { user } = useAuthContext();
+
+  const [note, setNote] = useState(false);
+
+  useEffect(() => {
+    if (searchData.length === 0) {
+      console.log("prazan");
+      setNote(true);
+    }
+    // eslint-disable-next-line
+  }, []);
+
+  console.log(searchData);
 
   return (
     <>
@@ -43,6 +55,11 @@ const SearchList = ({ searchData }) => {
               );
             }
           })}
+        {note && (
+          <p className={classes.no_contact}>
+            Sorry, no contact matched your criteria
+          </p>
+        )}
       </div>
     </>
   );
