@@ -57,6 +57,17 @@ article {
     font-size: 1.15rem;
 }
 
+.back {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.back_link {
+    color: #42a5f5;
+    font-size: 1.25rem;
+    text-decoration: none;
+}
+
 @media screen and (min-width: 768px) {
     .wrap {
         grid-template-columns: 1fr 1fr;

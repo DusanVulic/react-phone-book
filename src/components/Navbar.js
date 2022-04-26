@@ -78,7 +78,9 @@ const Navbar = () => {
             )}
             {user && (
               <>
-                <li className="user"> hello {user.displayName} !</li>
+                <li className="user">
+                  hello {user.displayName.toUpperCase()} !
+                </li>
                 <li>
                   <Link
                     to="/"
