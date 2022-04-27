@@ -7,9 +7,7 @@ import { useFirestore } from "../hooks/useFirestore";
 //
 
 const ContactList = ({ phonebookData }) => {
-  const { deleteDocument, response } = useFirestore("phonebook");
-
-  console.log(response);
+  const { deleteDocument } = useFirestore("phonebook");
 
   return (
     <>

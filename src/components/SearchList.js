@@ -17,13 +17,10 @@ const SearchList = ({ searchData }) => {
 
   useEffect(() => {
     if (searchData.length === 0) {
-      console.log("prazan");
       setNote(true);
     }
     // eslint-disable-next-line
   }, []);
-
-  console.log(searchData);
 
   return (
     <>
