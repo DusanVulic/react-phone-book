@@ -41,10 +41,8 @@ const SearchList = ({ searchData }) => {
                   <div>
                     <h3>{company}</h3>
                     <p>{email}</p>
-                    <a href={"tel:" + { phone }} className={classes.phone}>
-                      pozovi {phone}
-                    </a>
-                    <p className={classes.big_screeen_phone}>{phone}</p>
+
+                    <p className={classes.phone}>{phone}</p>
                     <p>{additionalInfo}</p>
                   </div>
                 </article>

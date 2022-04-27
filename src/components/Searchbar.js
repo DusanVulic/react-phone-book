@@ -4,6 +4,8 @@ import { useState } from "react";
 //MUI
 import Container from "@mui/material/Container";
 import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 //
 
 const Serchbar = () => {
@@ -46,6 +48,14 @@ const Serchbar = () => {
           required
           sx={{ marginBottom: "25px" }}
         />
+        <Button
+          variant="contained"
+          type="submit"
+          endIcon={<ArrowForwardIosRoundedIcon />}
+          sx={{ marginBottom: "20px" }}
+        >
+          submit
+        </Button>
       </form>
       <p>
         * you can search your contacts by input search terms in a field above
